@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pergerakan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; border-left: 5px solid #cbd5e0; text-align: left; }
+        .nama { font-size: 18px; font-weight: bold; color: #2d3748; margin-bottom: 5px; }
+        .status { display: inline-block; padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
+        .status.office { background-color: #c6f6d5; color: #22543d; } 
+        .status.out { background-color: #fed7d7; color: #742a2a; } 
+        .detail { font-size: 14px; color: #4a5568; margin: 4px 0; }
+        .back-btn { display: block; text-align: center; margin-top: 20px; padding: 12px; background-color: #4a5568; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>📊 Status Semasa Pegawai</h2>
+    </div>
+    
+    <div id="data-container">
+        <p style="text-align:center;">Memuatkan data...</p>
+    </div>
+    
+    <a href="index.html" class="back-btn">⬅️ Kembali ke Menu Utama</a>
+
+    <script>
+        // MASUKKAN LINK CSV ANDA DI BAWAH INI
+        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrskJhRKEs14EE7qEYJxQjAtemeKg03k4PeN2EC5-NzgMCwTIspR4Bc9bGBWOmAR3DD1Ap5y9wP8tZ/pub?gid=1854697620&single=true&output=csv";
+
+        Papa.parse(csvUrl, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                const data = results.data;
+                let html = '';
+                
+                data.forEach(row => {
+                    if(row['Nama Pegawai']) {
+                        let statusClass = 'out';
+                        let statusText = row['Status Hari Ini'];
+                        
+                        if(statusText === 'In Office' || statusText === '-') {
+                            statusClass = 'office';
+                        }
+                        
+                        html += `
+                        <div class="card">
+                            <div class="nama">${row['Nama Pegawai']}</div>
+                            <div class="status ${statusClass}">${statusText}</div>
+                            <div class="detail">📍 <b>Lokasi/Tujuan:</b> ${row['Lokasi / Tujuan']}</div>
+                            <div class="detail">⏰ <b>Masa:</b> ${row['Masa']}</div>
+                        </div>
+                        `;
+                    }
+                });
+                
+                document.getElementById('data-container').innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>
