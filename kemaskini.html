@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemaskini Pergerakan</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; }
+        .form-container { background: white; max-width: 400px; margin: auto; padding: 25px 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        h2 { text-align: center; color: #2d3748; margin-top: 0; }
+        label { font-size: 14px; font-weight: bold; color: #4a5568; display: block; margin-top: 15px; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; background-color: #f8fafc; }
+        input:focus, select:focus { outline: none; border-color: #3182ce; background-color: #fff; }
+        .btn-submit { width: 100%; margin-top: 25px; padding: 15px; background-color: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background-color: #2b6cb0; }
+        .btn-back { display: block; text-align: center; margin-top: 15px; color: #a0aec0; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>📝 Borang Pergerakan</h2>
+        
+        <script type="text/javascript">var submitted=false;</script>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location='dashboard.html'; }"></iframe>
+        
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSc3XzeTpL9wc4cyJCCKlVyq8ccHvLRzs2XffJDaE-_GI-eFYw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            
+            <label>Nama Pegawai</label>
+            <select name="entry.571802132" required>
+                <option value="">-- Sila Pilih --</option>
+                <option value="KPSU Emma">KPSU Emma</option>
+                <option value="PSU Surender">PSU Surender</option>
+                <option value="PSU Akmal">PSU Akmal</option>
+                <option value="PPTK Razeman">PPTK Razeman</option>
+                <option value="PPTK Alifah">PPTK Alifah</option>
+                <option value="CC Zurina">CC Zurina</option>
+                <option value="PT Hafizul">PT Hafizul</option>
+                <option value="PT Aishah">PT Aishah</option>
+                <option value="PT Azril">PT Azril</option>
+                <option value="PO Hasmalina">PO Hasmalina</option>
+                <option value="Mystep Allysa">Mystep Allysa</option>
+                <option value="Mystep Syahidah">Mystep Syahidah</option>
+                <option value="Mystep Alisha">Mystep Alisha</option>
+                <option value="Mystep Irfan">Mystep Irfan</option>
+                <option value="Mystep Afiqah">Mystep Afiqah</option>
+            </select>
+
+            <label>Status</label>
+            <select name="entry.1139350507" required>
+                <option value="">-- Sila Pilih --</option>
+                <option value="Mesyuarat/Outstation">Mesyuarat/Outstation</option>
+                <option value="Cuti">Cuti</option>
+                <option value="Time-off/Urusan luar pejabat">Time-off/Urusan luar pejabat</option>
+                <option value="WFH">WFH</option>
+                <option value="In Office">In Office</option>
+            </select>
+
+            <label>Tarikh Mula</label>
+            <input type="date" name="entry.1530751807" required>
+
+            <label>Tarikh Tamat</label>
+            <input type="date" name="entry.1713288733" required>
+
+            <label>Masa</label>
+            <input type="text" name="entry.877874270" placeholder="Cth: 09:00 Pagi - 12:00 Tghari" required>
+
+            <label>Lokasi / Tujuan</label>
+            <input type="text" name="entry.56038233" placeholder="Cth: Mesyuarat di Putrajaya" required>
+
+            <button type="submit" class="btn-submit">HANTAR REKOD</button>
+            <a href="index.html" class="btn-back">Batal & Kembali</a>
+        </form>
+    </div>
+
+</body>
+</html>
